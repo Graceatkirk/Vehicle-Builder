@@ -1,7 +1,12 @@
-export default class Cli {
-  vehicles: any[]; // You can replace 'any' with a specific type if you have a Vehicle class or interface
+import Car from './Car';
+import Motorbike from './Motorbike';
+import Truck from './Truck';
+import Wheel from './Wheel';
 
-  constructor(vehicles: any[]) {
+export default class Cli {
+  vehicles: (Car | Motorbike | Truck)[];
+
+  constructor(vehicles: (Car | Motorbike | Truck)[]) {
       this.vehicles = vehicles;
   }
 
@@ -12,5 +17,14 @@ export default class Cli {
   startCli(): void {
       console.log('CLI started with vehicles:', this.vehicles);
       // Implement CLI functionality here
+      this.promptUser();
   }
+
+  private promptUser(): void {
+      // Example of prompting the user for input (using Inquirer or similar)
+      console.log('Choose an action:');
+      // Implement user input handling for actions like creating a vehicle, selecting a vehicle, etc.
+  }
+
+  // Additional methods for handling vehicle actions can be added here
 }

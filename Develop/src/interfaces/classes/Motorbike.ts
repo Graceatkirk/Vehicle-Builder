@@ -1,14 +1,17 @@
-export default class Motorbike {
-  vin: string; // Assuming vin is a string
-  color: string; // Assuming color is a string
-  make: string; // Assuming make is a string
-  model: string; // Assuming model is a string
-  year: number; // Assuming year is a number
-  weight: number; // Assuming weight is a number
-  maxSpeed: number; // Assuming maxSpeed is a number
-  wheels: any[]; // You can replace 'any' with a specific type if you have a Wheel class or interface
+import Wheel from './Wheel'; // Ensure this is imported
 
-  constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, maxSpeed: number, wheels: any[]) {
+
+export default class Motorbike {
+  vin: string;
+  color: string;
+  make: string;
+  model: string;
+  year: number;
+  weight: number;
+  maxSpeed: number;
+  wheels: Wheel[];
+
+  constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, maxSpeed: number, wheels: Wheel[]) {
       this.vin = vin;
       this.color = color;
       this.make = make;
@@ -16,6 +19,18 @@ export default class Motorbike {
       this.year = year;
       this.weight = weight;
       this.maxSpeed = maxSpeed;
-      this.wheels = wheels; // This could be an array of Wheel objects
+      this.wheels = wheels; 
   }
+
+  // Example method to display motorbike details
+  displayInfo(): string {
+      return `Motorbike Info: ${this.make} ${this.model} (${this.year}), VIN: ${this.vin}, Color: ${this.color}`;
+  }
+
+  // Example method to simulate starting the motorbike
+  start(): string {
+      return `${this.make} ${this.model} is starting.`;
+  }
+
+  // Additional methods can be added as per requirements
 }

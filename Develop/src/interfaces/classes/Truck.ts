@@ -1,15 +1,20 @@
-export default class Truck {
-  vin: string; // Assuming vin is a string
-  color: string; // Assuming color is a string
-  make: string; // Assuming make is a string
-  model: string; // Assuming model is a string
-  year: number; // This is already specified as a number
-  weight: number; // Assuming weight is a number
-  maxSpeed: number; // Assuming maxSpeed is a number
-  wheels: any[]; // You can replace 'any' with a specific type if you have a Wheel class or interface
-  towingCapacity: number; // Assuming towingCapacity is a number
+interface Wheel {
+  size: number;
+  type: string; // e.g., "alloy", "steel"
+}
 
-  constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, maxSpeed: number, wheels: any[], towingCapacity: number) {
+export default class Truck {
+  vin: string;
+  color: string;
+  make: string;
+  model: string;
+  year: number;
+  weight: number;
+  maxSpeed: number;
+  wheels: Wheel[];
+  towingCapacity: number;
+
+  constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, maxSpeed: number, wheels: Wheel[], towingCapacity: number) {
       this.vin = vin;
       this.color = color;
       this.make = make;
@@ -20,4 +25,16 @@ export default class Truck {
       this.wheels = wheels;
       this.towingCapacity = towingCapacity;
   }
+
+  // Example method to display truck details
+  displayInfo(): string {
+      return `Truck Info: ${this.make} ${this.model} (${this.year}), VIN: ${this.vin}, Color: ${this.color}, Towing Capacity: ${this.towingCapacity} lbs`;
+  }
+
+  // Example method to simulate starting the truck
+  start(): string {
+      return `${this.make} ${this.model} is starting.`;
+  }
+
+  // Additional methods can be added as per requirements
 }
