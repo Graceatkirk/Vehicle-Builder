@@ -1,40 +1,60 @@
-interface Wheel {
-  size: number;
-  type: string; // e.g., "alloy", "steel"
+import Driveable from "./Driveable";
+import AbleToTow from "./AbleToTow";
+import Wheel from "./Wheel";
+import Car from "./Car";
+import Motorbike from "./Motorbike";
+
+class Truck implements AbleToTow, Driveable {
+    towingCapacity: number;
+    started: boolean = false;
+    currentSpeed: number = 0;
+
+    constructor(
+        public vin: string,
+        public color: string,
+        public make: string,
+        public model: string,
+        public year: number,
+        public weight: number,
+        public maxSpeed: number,
+        public wheels: Wheel[],
+        towingCapacity: number
+    ) {
+        this.towingCapacity = towingCapacity;
+    }
+
+    tow(vehicle: Truck | Motorbike | Car): void {
+        console.log(`Towing ${vehicle.make} ${vehicle.model}`);
+    }
+
+    start(): void {
+        this.started = true;
+        console.log(`${this.make} ${this.model} started.`);
+    }
+
+    accelerate(change: number): void {
+        this.currentSpeed += change;
+        console.log(`${this.make} ${this.model} accelerated to ${this.currentSpeed} km/h.`);
+    }
+
+    decelerate(change: number): void {
+        this.currentSpeed -= change;
+        console.log(`${this.make} ${this.model} decelerated to ${this.currentSpeed} km/h.`);
+    }
+
+    stop(): void {
+        this.currentSpeed = 0;
+        this.started = false;
+        console.log(`${this.make} ${this.model} stopped.`);
+    }
+
+    turn(direction: string): void {
+        console.log(`${this.make} ${this.model} turned ${direction}.`);
+    }
+
+    reverse(): void {
+        console.log(`${this.make} ${this.model} is reversing.`);
+    }
 }
 
-export default class Truck {
-  vin: string;
-  color: string;
-  make: string;
-  model: string;
-  year: number;
-  weight: number;
-  maxSpeed: number;
-  wheels: Wheel[];
-  towingCapacity: number;
-
-  constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, maxSpeed: number, wheels: Wheel[], towingCapacity: number) {
-      this.vin = vin;
-      this.color = color;
-      this.make = make;
-      this.model = model;
-      this.year = year;
-      this.weight = weight;
-      this.maxSpeed = maxSpeed;
-      this.wheels = wheels;
-      this.towingCapacity = towingCapacity;
-  }
-
-  // Example method to display truck details
-  displayInfo(): string {
-      return `Truck Info: ${this.make} ${this.model} (${this.year}), VIN: ${this.vin}, Color: ${this.color}, Towing Capacity: ${this.towingCapacity} lbs`;
-  }
-
-  // Example method to simulate starting the truck
-  start(): string {
-      return `${this.make} ${this.model} is starting.`;
-  }
-
-  // Additional methods can be added as per requirements
-}
+export default Truck;
