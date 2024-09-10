@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
-import Car from './src/classes/Car';
-import Truck from './src/classes/Truck';
-import Motorbike from './src/classes/Motorbike';
+import Car from './classes/Car';
+import Truck from './classes/Truck';
+import Motorbike from './classes/Motorbike';
 
 let vehicles: (Car | Truck | Motorbike)[] = [];
 
