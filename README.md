@@ -20,11 +20,15 @@ The Vehicle-Builder is a command-line application that allows users to create an
 - **Inquirer**: Library for creating interactive command-line interfaces
 - **ES6 Classes**: Used to define vehicle and wheel structures
 
+## Video
+
+<iframe src="https://drive.google.com/file/d/1WmlsCmZfMJrDSHsD3UQbo58boVhS7DRB/preview" width="640" height="480"></iframe>
+
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone 
+   git clone https://github.com/Graceatkirk/Vehicle-Builder.git
 Install the required packages:
 
 npm install
